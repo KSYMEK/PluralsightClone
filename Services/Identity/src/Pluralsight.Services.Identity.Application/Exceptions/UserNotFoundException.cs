@@ -6,7 +6,7 @@ namespace Pluralsight.Services.Identity.Application.Exceptions {
 			UserId = userId;
 		}
 
-		public override string Code { get; }
+		public override string Code => "user_not_found";
 		public Guid UserId { get; }
 	}
 }
