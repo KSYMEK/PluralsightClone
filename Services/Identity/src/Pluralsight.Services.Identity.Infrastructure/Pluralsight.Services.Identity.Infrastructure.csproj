@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Pluralsight.Services.Identity.Application\Pluralsight.Services.Identity.Application.csproj" />
+      <ProjectReference Include="..\Pluralsight.Services.Identity.Core\Pluralsight.Services.Identity.Core.csproj" />
+    </ItemGroup>
+
+</Project>

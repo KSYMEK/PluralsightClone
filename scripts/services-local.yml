@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  web-front:
+    build: ../Services/Web/src/Pluralsight.Web
+    container_name: web-front
+    restart: unless-stopped
+    # environment:
+      # - NTRADA_CONFIG=ntrada-async.docker.yml
+    ports:
+      - 5000:80
+    networks:
+      - pluralsight
+    depends_on:
+      - identity-service
+      - course-service
+
+  identity-service:
+    build: ../Services/Identity/src/Pluralsight.Services.Identity.Api
+    container_name: identity-service
+    restart: unless-stopped
+    ports:
+      - 5001:80
+    networks:
+      - pluralsight
+        
+  subscription-service:
+    build: ../Services/Subscription/src/Pluralsight.Services.Subscription.Api
+    container_name: subscription-service
+    restart: unless-stopped
+    ports:
+      - 5002:80
+    networks:
+      - pluralsight
+
+  course-service:
+    build: ../Services/Courses/src/Pluralsight.Services.Courses.Api
+    container_name: course-service
+    restart: unless-stopped
+    ports:
+      - 5003:80
+    networks:
+      - pluralsight
+        
+networks:
+  pluralsight:
+    name: pluralsight-network

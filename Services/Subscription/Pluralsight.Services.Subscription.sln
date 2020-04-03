@@ -1,0 +1,36 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E9859197-36CA-471C-8634-5C295B912420}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4B031380-300C-4781-AA7D-CFF0CCD72EB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Subscription.Api", "src\Pluralsight.Services.Subscription.Api\Pluralsight.Services.Subscription.Api.csproj", "{4B56806F-F92E-4968-9419-4DFE5CE387F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Subscription.Core", "src\Pluralsight.Services.Subscription.Core\Pluralsight.Services.Subscription.Core.csproj", "{F79C5D61-2C9D-4E29-98C3-6F8C19A64656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Subscription.Application", "src\Pluralsight.Services.Subscription.Application\Pluralsight.Services.Subscription.Application.csproj", "{9CB5C641-EA5B-4929-BF64-33694A75A7D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Subscription.Infrastructure", "src\Pluralsight.Services.Subscription.Infrastructure\Pluralsight.Services.Subscription.Infrastructure.csproj", "{BA3B91C9-D92C-463D-86EF-8DFBE92ABA2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B56806F-F92E-4968-9419-4DFE5CE387F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B56806F-F92E-4968-9419-4DFE5CE387F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79C5D61-2C9D-4E29-98C3-6F8C19A64656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79C5D61-2C9D-4E29-98C3-6F8C19A64656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB5C641-EA5B-4929-BF64-33694A75A7D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB5C641-EA5B-4929-BF64-33694A75A7D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3B91C9-D92C-463D-86EF-8DFBE92ABA2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3B91C9-D92C-463D-86EF-8DFBE92ABA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4B56806F-F92E-4968-9419-4DFE5CE387F7} = {E9859197-36CA-471C-8634-5C295B912420}
+		{F79C5D61-2C9D-4E29-98C3-6F8C19A64656} = {E9859197-36CA-471C-8634-5C295B912420}
+		{9CB5C641-EA5B-4929-BF64-33694A75A7D6} = {E9859197-36CA-471C-8634-5C295B912420}
+		{BA3B91C9-D92C-463D-86EF-8DFBE92ABA2D} = {E9859197-36CA-471C-8634-5C295B912420}
+	EndGlobalSection
+EndGlobal

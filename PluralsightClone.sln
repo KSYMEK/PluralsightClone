@@ -1,0 +1,97 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{16CE9045-8D1C-4B3C-9AD9-BD7A656E9652}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{589EF132-DE46-4F50-9A7C-4DE6AF72A000}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\infrastructure.yml = scripts\infrastructure.yml
+		scripts\services-local.yml = scripts\services-local.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{2F2EE8C9-B029-4591-8AA1-3DE62F7C7294}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Course", "Course", "{417119AF-9A51-45B0-8A94-CF168767FD27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscription", "Subscription", "{550BA2BB-81C1-477C-9030-D5D56AF602A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{13C0E863-F9F5-4A62-946A-CAAF004CF74A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Identity.Api", "Services\Identity\src\Pluralsight.Services.Identity.Api\Pluralsight.Services.Identity.Api.csproj", "{B17F12DE-26F5-477C-8AE0-8C3E301D4C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Identity.Application", "Services\Identity\src\Pluralsight.Services.Identity.Application\Pluralsight.Services.Identity.Application.csproj", "{BBA348BF-2CC9-4410-96BC-57F524704074}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Identity.Core", "Services\Identity\src\Pluralsight.Services.Identity.Core\Pluralsight.Services.Identity.Core.csproj", "{F7D99027-77CD-412E-8731-D11D33F124C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Identity.Infrastructure", "Services\Identity\src\Pluralsight.Services.Identity.Infrastructure\Pluralsight.Services.Identity.Infrastructure.csproj", "{6BEE559A-713B-44A3-B60C-52DA2CE6C36F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Courses.Api", "Services\Courses\src\Pluralsight.Services.Courses.Api\Pluralsight.Services.Courses.Api.csproj", "{3E19BA5E-C6AB-4DE3-AC5A-8CA18622DA7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Courses.Application", "Services\Courses\src\Pluralsight.Services.Courses.Application\Pluralsight.Services.Courses.Application.csproj", "{523F9C6E-27D8-4FA2-9BC3-77854CFA88DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Courses.Core", "Services\Courses\src\Pluralsight.Services.Courses.Core\Pluralsight.Services.Courses.Core.csproj", "{C8623128-2598-4C8F-A880-13D043E6755D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Courses.Infrastructure", "Services\Courses\src\Pluralsight.Services.Courses.Infrastructure\Pluralsight.Services.Courses.Infrastructure.csproj", "{7EE999BD-ED3F-4BCB-8F76-4FE503731A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Subscription.Api", "Services\Subscription\src\Pluralsight.Services.Subscription.Api\Pluralsight.Services.Subscription.Api.csproj", "{9A411995-A820-41C7-8FF7-CD27C798E353}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Subscription.Application", "Services\Subscription\src\Pluralsight.Services.Subscription.Application\Pluralsight.Services.Subscription.Application.csproj", "{F0D00470-F713-4A93-AE0A-666BCE5AAD0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Subscription.Core", "Services\Subscription\src\Pluralsight.Services.Subscription.Core\Pluralsight.Services.Subscription.Core.csproj", "{06006CAF-7190-4779-8666-9C8AA0035478}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Subscription.Infrastructure", "Services\Subscription\src\Pluralsight.Services.Subscription.Infrastructure\Pluralsight.Services.Subscription.Infrastructure.csproj", "{27765337-6498-452F-87AE-81A350E6B4C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Web", "Services\Web\src\Pluralsight.Web\Pluralsight.Web.csproj", "{AC9B2EBB-CC43-44D5-8D70-227C88669D32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B17F12DE-26F5-477C-8AE0-8C3E301D4C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17F12DE-26F5-477C-8AE0-8C3E301D4C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA348BF-2CC9-4410-96BC-57F524704074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA348BF-2CC9-4410-96BC-57F524704074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D99027-77CD-412E-8731-D11D33F124C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D99027-77CD-412E-8731-D11D33F124C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEE559A-713B-44A3-B60C-52DA2CE6C36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEE559A-713B-44A3-B60C-52DA2CE6C36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E19BA5E-C6AB-4DE3-AC5A-8CA18622DA7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E19BA5E-C6AB-4DE3-AC5A-8CA18622DA7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{523F9C6E-27D8-4FA2-9BC3-77854CFA88DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{523F9C6E-27D8-4FA2-9BC3-77854CFA88DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8623128-2598-4C8F-A880-13D043E6755D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8623128-2598-4C8F-A880-13D043E6755D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE999BD-ED3F-4BCB-8F76-4FE503731A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE999BD-ED3F-4BCB-8F76-4FE503731A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A411995-A820-41C7-8FF7-CD27C798E353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A411995-A820-41C7-8FF7-CD27C798E353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0D00470-F713-4A93-AE0A-666BCE5AAD0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0D00470-F713-4A93-AE0A-666BCE5AAD0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06006CAF-7190-4779-8666-9C8AA0035478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06006CAF-7190-4779-8666-9C8AA0035478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27765337-6498-452F-87AE-81A350E6B4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27765337-6498-452F-87AE-81A350E6B4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9B2EBB-CC43-44D5-8D70-227C88669D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9B2EBB-CC43-44D5-8D70-227C88669D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2F2EE8C9-B029-4591-8AA1-3DE62F7C7294} = {16CE9045-8D1C-4B3C-9AD9-BD7A656E9652}
+		{417119AF-9A51-45B0-8A94-CF168767FD27} = {16CE9045-8D1C-4B3C-9AD9-BD7A656E9652}
+		{550BA2BB-81C1-477C-9030-D5D56AF602A6} = {16CE9045-8D1C-4B3C-9AD9-BD7A656E9652}
+		{13C0E863-F9F5-4A62-946A-CAAF004CF74A} = {16CE9045-8D1C-4B3C-9AD9-BD7A656E9652}
+		{B17F12DE-26F5-477C-8AE0-8C3E301D4C4A} = {2F2EE8C9-B029-4591-8AA1-3DE62F7C7294}
+		{BBA348BF-2CC9-4410-96BC-57F524704074} = {2F2EE8C9-B029-4591-8AA1-3DE62F7C7294}
+		{F7D99027-77CD-412E-8731-D11D33F124C8} = {2F2EE8C9-B029-4591-8AA1-3DE62F7C7294}
+		{6BEE559A-713B-44A3-B60C-52DA2CE6C36F} = {2F2EE8C9-B029-4591-8AA1-3DE62F7C7294}
+		{3E19BA5E-C6AB-4DE3-AC5A-8CA18622DA7C} = {417119AF-9A51-45B0-8A94-CF168767FD27}
+		{523F9C6E-27D8-4FA2-9BC3-77854CFA88DD} = {417119AF-9A51-45B0-8A94-CF168767FD27}
+		{C8623128-2598-4C8F-A880-13D043E6755D} = {417119AF-9A51-45B0-8A94-CF168767FD27}
+		{7EE999BD-ED3F-4BCB-8F76-4FE503731A40} = {417119AF-9A51-45B0-8A94-CF168767FD27}
+		{9A411995-A820-41C7-8FF7-CD27C798E353} = {550BA2BB-81C1-477C-9030-D5D56AF602A6}
+		{F0D00470-F713-4A93-AE0A-666BCE5AAD0B} = {550BA2BB-81C1-477C-9030-D5D56AF602A6}
+		{06006CAF-7190-4779-8666-9C8AA0035478} = {550BA2BB-81C1-477C-9030-D5D56AF602A6}
+		{27765337-6498-452F-87AE-81A350E6B4C1} = {550BA2BB-81C1-477C-9030-D5D56AF602A6}
+		{AC9B2EBB-CC43-44D5-8D70-227C88669D32} = {13C0E863-F9F5-4A62-946A-CAAF004CF74A}
+	EndGlobalSection
+EndGlobal

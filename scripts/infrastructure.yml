@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  mongo:
+    image: "mongo:3-xenial"
+    container_name: mongo
+    restart: unless-stopped
+    networks:
+      - pluralsight
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data/db
+
+  rabbitmq:
+    image: "rabbitmq:latest"
+    container_name: rabbitmq
+    restart: unless-stopped
+    networks:
+      - pluralsight
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  redis:
+    image: "redis:6.0-rc"
+    container_name: redis
+    restart: unless-stopped
+    networks:
+      - pluralsight
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+
+volumes:
+  mongo:
+    driver: local
+  rabbitmq:
+    driver: local
+  redis:
+    driver: local
+    
+networks:
+  pluralsight:
+    external: true
+    name: pluralsight-network

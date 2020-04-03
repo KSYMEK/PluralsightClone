@@ -1,0 +1,19 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4EFEB596-C711-484F-8662-2524FF5D1CA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Web", "src\Pluralsight.Web\Pluralsight.Web.csproj", "{B9E444A9-906F-4596-A22D-CA35D71632E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9E444A9-906F-4596-A22D-CA35D71632E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E444A9-906F-4596-A22D-CA35D71632E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9E444A9-906F-4596-A22D-CA35D71632E1} = {4EFEB596-C711-484F-8662-2524FF5D1CA0}
+	EndGlobalSection
+EndGlobal

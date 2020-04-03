@@ -1,0 +1,36 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3A48E599-5C12-460C-864A-E0DC1CA38A8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E8973C16-469A-4117-B797-EBCC6D9ECB1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Courses.Api", "src\Pluralsight.Services.Courses.Api\Pluralsight.Services.Courses.Api.csproj", "{B5F54887-6504-4C5D-A9CD-1DEFA7CED5F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Courses.Application", "src\Pluralsight.Services.Courses.Application\Pluralsight.Services.Courses.Application.csproj", "{118F53C9-2C0B-4E82-9BD8-313D4D7B029F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Courses.Core", "src\Pluralsight.Services.Courses.Core\Pluralsight.Services.Courses.Core.csproj", "{32721C4B-13E1-4B8E-A322-F70ABC918332}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Courses.Infrastructure", "src\Pluralsight.Services.Courses.Infrastructure\Pluralsight.Services.Courses.Infrastructure.csproj", "{760A40D2-9341-4BCD-A639-18E0955431FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5F54887-6504-4C5D-A9CD-1DEFA7CED5F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F54887-6504-4C5D-A9CD-1DEFA7CED5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{118F53C9-2C0B-4E82-9BD8-313D4D7B029F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{118F53C9-2C0B-4E82-9BD8-313D4D7B029F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32721C4B-13E1-4B8E-A322-F70ABC918332}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32721C4B-13E1-4B8E-A322-F70ABC918332}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760A40D2-9341-4BCD-A639-18E0955431FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760A40D2-9341-4BCD-A639-18E0955431FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B5F54887-6504-4C5D-A9CD-1DEFA7CED5F7} = {3A48E599-5C12-460C-864A-E0DC1CA38A8F}
+		{118F53C9-2C0B-4E82-9BD8-313D4D7B029F} = {3A48E599-5C12-460C-864A-E0DC1CA38A8F}
+		{32721C4B-13E1-4B8E-A322-F70ABC918332} = {3A48E599-5C12-460C-864A-E0DC1CA38A8F}
+		{760A40D2-9341-4BCD-A639-18E0955431FA} = {3A48E599-5C12-460C-864A-E0DC1CA38A8F}
+	EndGlobalSection
+EndGlobal

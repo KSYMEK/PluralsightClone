@@ -1,0 +1,36 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{174550B8-E4FE-4147-B150-16DD395EDDEB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D5A64AF5-FE5D-46E5-9D7F-69891BE58EC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Identity.Api", "src\Pluralsight.Services.Identity.Api\Pluralsight.Services.Identity.Api.csproj", "{841FCF38-F0D0-41C5-AA7D-DA9E5FC4F7BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Identity.Application", "src\Pluralsight.Services.Identity.Application\Pluralsight.Services.Identity.Application.csproj", "{31DB8268-8D87-401C-A5BB-E8D2655D17C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Identity.Core", "src\Pluralsight.Services.Identity.Core\Pluralsight.Services.Identity.Core.csproj", "{CD631D15-16A8-473F-8575-068E84741926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.Services.Identity.Infrastructure", "src\Pluralsight.Services.Identity.Infrastructure\Pluralsight.Services.Identity.Infrastructure.csproj", "{19936601-5DF0-4913-BC9E-119A997AE060}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{841FCF38-F0D0-41C5-AA7D-DA9E5FC4F7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{841FCF38-F0D0-41C5-AA7D-DA9E5FC4F7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31DB8268-8D87-401C-A5BB-E8D2655D17C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31DB8268-8D87-401C-A5BB-E8D2655D17C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD631D15-16A8-473F-8575-068E84741926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD631D15-16A8-473F-8575-068E84741926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19936601-5DF0-4913-BC9E-119A997AE060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19936601-5DF0-4913-BC9E-119A997AE060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{841FCF38-F0D0-41C5-AA7D-DA9E5FC4F7BE} = {174550B8-E4FE-4147-B150-16DD395EDDEB}
+		{31DB8268-8D87-401C-A5BB-E8D2655D17C7} = {174550B8-E4FE-4147-B150-16DD395EDDEB}
+		{CD631D15-16A8-473F-8575-068E84741926} = {174550B8-E4FE-4147-B150-16DD395EDDEB}
+		{19936601-5DF0-4913-BC9E-119A997AE060} = {174550B8-E4FE-4147-B150-16DD395EDDEB}
+	EndGlobalSection
+EndGlobal
