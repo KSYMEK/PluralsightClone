@@ -1,0 +1,20 @@
+using System;
+using Convey.MessageBrokers.RabbitMQ;
+using Pluralsight.Services.Identity.Application.Commands;
+using Pluralsight.Services.Identity.Application.Events.Rejected;
+using Pluralsight.Services.Identity.Core.Exceptions;
+
+namespace Pluralsight.Services.Identity.Infrastructure.Exceptions {
+	public class ExceptionToMessageMapper : IExceptionToMessageMapper {
+		public object Map(Exception exception, object message) => exception switch {
+			EmailInUseException ex => new SignedUpRejected(ex.Email, ex.Message, ex.Code),
+			InvalidCredentialsException ex => new SignInRejected(ex.Email, ex.Message, ex.Code),
+			InvalidEmailException ex => message switch {
+				SignIn command => new SignInRejected(command.Email, ex.Message, ex.Code),
+				SignedUpRejected command => new SignedUpRejected(command.Email, ex.Message, ex.Code),
+				_ => null
+			},
+			_ => null
+		};
+	}
+}
