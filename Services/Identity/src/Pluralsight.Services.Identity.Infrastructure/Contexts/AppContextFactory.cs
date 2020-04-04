@@ -22,7 +22,7 @@ namespace Pluralsight.Services.Identity.Infrastructure.Contexts {
 					: new AppContext(JsonConvert.DeserializeObject<CorrelationContext>(payload));
 			}
 
-			var context = _httpContextAccessor.GetCorrelactionContext();
+			var context = _httpContextAccessor.GetCorrelationContext();
 			return context is null ? AppContext.Empty : new AppContext(context);
 		}
 	}
