@@ -1,6 +1,15 @@
 version: "3.7"
 
 services:
+  api-gateway:
+    build: ../Services/Gateway
+    container_name: api-gateway
+    restart: unless-stopped
+    ports:
+      - 5000:80
+    networks:
+      - pluralsight  
+
   identity-service:
     build: ../Services/Identity
     container_name: identity-service
@@ -8,7 +17,9 @@ services:
     ports:
       - 5001:80
     networks:
-      - pluralsight        
+      - pluralsight
+    depends_on:
+      - api-gateway      
 
 networks:
   pluralsight:

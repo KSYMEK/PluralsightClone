@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1B01697E-47CE-427F-8145-1C533BA03C65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluralsight.APIGateway", "src\Pluralsight.APIGateway\Pluralsight.APIGateway.csproj", "{3158E129-E225-49B5-99EE-0262B3ED86AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3158E129-E225-49B5-99EE-0262B3ED86AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3158E129-E225-49B5-99EE-0262B3ED86AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3158E129-E225-49B5-99EE-0262B3ED86AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3158E129-E225-49B5-99EE-0262B3ED86AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3158E129-E225-49B5-99EE-0262B3ED86AE} = {1B01697E-47CE-427F-8145-1C533BA03C65}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5150FE91-2604-4260-BDE8-726304A76039}
+	EndGlobalSection
+EndGlobal
