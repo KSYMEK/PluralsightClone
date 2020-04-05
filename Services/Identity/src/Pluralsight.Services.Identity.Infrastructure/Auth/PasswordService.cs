@@ -1,18 +1,20 @@
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Pluralsight.Services.Identity.Application.Services;
-
 namespace Pluralsight.Services.Identity.Infrastructure.Auth {
-	public class PasswordService : IPasswordService {
-		private readonly IPasswordHasher<IPasswordService> _passwordHasher;
+    using Application.Services;
+    using Microsoft.AspNetCore.Identity;
 
-		public PasswordService(IPasswordHasher<IPasswordService> passwordHasher) {
-			_passwordHasher = passwordHasher;
-		}
+    public class PasswordService : IPasswordService {
+        private readonly IPasswordHasher<IPasswordService> _passwordHasher;
 
-		public bool IsValid(string hash, string password) =>
-			_passwordHasher.VerifyHashedPassword(this, hash, password) != PasswordVerificationResult.Failed;
+        public PasswordService(IPasswordHasher<IPasswordService> passwordHasher) {
+            _passwordHasher = passwordHasher;
+        }
 
-		public string Hash(string password) => _passwordHasher.HashPassword(this, password);
-	}
+        public bool IsValid(string hash, string password) {
+            return _passwordHasher.VerifyHashedPassword(this, hash, password) != PasswordVerificationResult.Failed;
+        }
+
+        public string Hash(string password) {
+            return _passwordHasher.HashPassword(this, password);
+        }
+    }
 }

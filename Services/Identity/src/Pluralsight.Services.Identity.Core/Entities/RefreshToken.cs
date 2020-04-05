@@ -1,41 +1,32 @@
-using System;
-using Pluralsight.Services.Identity.Core.Exceptions;
-
 namespace Pluralsight.Services.Identity.Core.Entities {
-	public class RefreshToken : AggregateRoot {
-		public AggregateId UserId { get; private set; }
-		public string Token { get; private set; }
-		public DateTime CreatedAt { get; private set; }
-		public DateTime? RevokedAt { get; private set; }
-		public bool Revoked => RevokedAt.HasValue;
+    using System;
+    using Exceptions;
 
-		protected RefreshToken()
-		{
-		}
+    public class RefreshToken : AggregateRoot {
+        protected RefreshToken() {
+        }
 
-		public RefreshToken(AggregateId id, AggregateId userId, string token, DateTime createdAt,
-			DateTime? revokedAt = null)
-		{
-			if (string.IsNullOrWhiteSpace(token))
-			{
-				throw new EmptyRefreshTokenException();
-			}
+        public RefreshToken(AggregateId id, AggregateId userId, string token, DateTime createdAt,
+            DateTime? revokedAt = null) {
+            if (string.IsNullOrWhiteSpace(token)) throw new EmptyRefreshTokenException();
 
-			Id = id;
-			UserId = userId;
-			Token = token;
-			CreatedAt = createdAt;
-			RevokedAt = revokedAt;
-		}
+            Id = id;
+            UserId = userId;
+            Token = token;
+            CreatedAt = createdAt;
+            RevokedAt = revokedAt;
+        }
 
-		public void Revoke(DateTime revokedAt)
-		{
-			if (Revoked)
-			{
-				throw new RevokedRefreshTokenException();
-			}
+        public AggregateId UserId { get; }
+        public string Token { get; }
+        public DateTime CreatedAt { get; }
+        public DateTime? RevokedAt { get; private set; }
+        public bool Revoked => RevokedAt.HasValue;
 
-			RevokedAt = revokedAt;
-		}
-	}
+        public void Revoke(DateTime revokedAt) {
+            if (Revoked) throw new RevokedRefreshTokenException();
+
+            RevokedAt = revokedAt;
+        }
+    }
 }

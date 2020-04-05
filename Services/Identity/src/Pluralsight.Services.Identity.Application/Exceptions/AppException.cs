@@ -1,11 +1,10 @@
-using System;
-
 namespace Pluralsight.Services.Identity.Application.Exceptions {
-	public abstract class AppException : Exception {
-		public abstract string Code { get; }
+    using System;
 
-		protected AppException(string message) : base(message) {
-			
-		}
-	}
+    public abstract class AppException : Exception {
+        protected AppException(string message) : base(message) {
+        }
+
+        public abstract string Code { get; }
+    }
 }

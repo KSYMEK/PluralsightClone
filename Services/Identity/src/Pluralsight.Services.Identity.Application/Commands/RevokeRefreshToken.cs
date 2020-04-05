@@ -1,11 +1,11 @@
-using Convey.CQRS.Commands;
-
 namespace Pluralsight.Services.Identity.Application.Commands {
-	public class RevokeRefreshToken : ICommand {
-		public string RefreshToken { get; }
+    using Convey.CQRS.Commands;
 
-		public RevokeRefreshToken(string refreshToken) {
-			RefreshToken = refreshToken;
-		}
-	}
+    public class RevokeRefreshToken : ICommand {
+        public RevokeRefreshToken(string refreshToken) {
+            RefreshToken = refreshToken;
+        }
+
+        public string RefreshToken { get; }
+    }
 }

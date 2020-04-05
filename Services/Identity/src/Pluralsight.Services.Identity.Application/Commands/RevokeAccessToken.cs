@@ -1,11 +1,11 @@
-using Convey.CQRS.Commands;
-
 namespace Pluralsight.Services.Identity.Application.Commands {
-	public class RevokeAccessToken : ICommand {
-		public string AccessToken { get; }
+    using Convey.CQRS.Commands;
 
-		public RevokeAccessToken(string accessToken) {
-			AccessToken = accessToken;
-		}
-	}
+    public class RevokeAccessToken : ICommand {
+        public RevokeAccessToken(string accessToken) {
+            AccessToken = accessToken;
+        }
+
+        public string AccessToken { get; }
+    }
 }

@@ -1,16 +1,16 @@
-using Convey.CQRS.Events;
-
 namespace Pluralsight.Services.Identity.Application.Events.Rejected {
-	[Contract]
-	public class SignInRejected : IRejectedEvent {
-		public string Reason { get; }
-		public string Code { get; }
-		public string Email { get; }
+    using Convey.CQRS.Events;
 
-		public SignInRejected(string email, string reason, string code) {
-			Reason = reason;
-			Email = email;
-			Code = code;
-		}
-	}
+    [Contract]
+    public class SignInRejected : IRejectedEvent {
+        public SignInRejected(string email, string reason, string code) {
+            Reason = reason;
+            Email = email;
+            Code = code;
+        }
+
+        public string Email { get; }
+        public string Reason { get; }
+        public string Code { get; }
+    }
 }

@@ -1,18 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Configurations>Debug;Release;Local</Configurations>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Local|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Pluralsight.Services.Identity.Application\Pluralsight.Services.Identity.Application.csproj" />
-      <ProjectReference Include="..\Pluralsight.Services.Identity.Core\Pluralsight.Services.Identity.Core.csproj" />
-      <ProjectReference Include="..\Pluralsight.Services.Identity.Infrastructure\Pluralsight.Services.Identity.Infrastructure.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\**" />
+    <Content Remove="Controllers\**" />
+    <EmbeddedResource Remove="Controllers\**" />
+    <None Remove="Controllers\**" />
+  </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pluralsight.Services.Identity.Infrastructure\Pluralsight.Services.Identity.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Convey" Version="0.4.*" />
+    <PackageReference Include="Convey.Logging" Version="0.4.*" />
+    <PackageReference Include="Convey.WebApi" Version="0.4.*" />
+    <PackageReference Include="Convey.WebApi.CQRS" Version="0.4.*" />
+  </ItemGroup>
 
 </Project>

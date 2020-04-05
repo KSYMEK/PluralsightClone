@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  identity-service:
+    build: ../Services/Identity
+    container_name: identity-service
+    restart: unless-stopped
+    ports:
+      - 5001:80
+    networks:
+      - pluralsight        
+
+networks:
+  pluralsight:
+    name: pluralsight-network
+    external: true

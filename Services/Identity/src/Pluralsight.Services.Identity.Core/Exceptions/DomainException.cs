@@ -1,11 +1,10 @@
-using System;
-
 namespace Pluralsight.Services.Identity.Core.Exceptions {
-	public abstract class DomainException : Exception {
-		public abstract string Code { get; }
+    using System;
 
-		protected DomainException(string message) : base(message) {
-			
-		}
-	}
+    public abstract class DomainException : Exception {
+        protected DomainException(string message) : base(message) {
+        }
+
+        public abstract string Code { get; }
+    }
 }

@@ -1,65 +1,66 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Pluralsight.Services.Identity.Application.DTO;
-using Pluralsight.Services.Identity.Application.Exceptions;
-using Pluralsight.Services.Identity.Core.Entities;
-using Pluralsight.Services.Identity.Core.Exceptions;
-using Pluralsight.Services.Identity.Core.Repositories;
-
 namespace Pluralsight.Services.Identity.Application.Services.Identity {
-	public class RefreshTokenService : IRefreshTokenService {
-		private readonly IRefreshTokenRepository _refreshTokenRepository;
-		private readonly IUserRepository _userRepository;
-		private readonly IJwtProvider _jwtProvider;
-		private readonly IRng _rng;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Entities;
+    using Core.Exceptions;
+    using Core.Repositories;
+    using DTO;
+    using Exceptions;
 
-		public RefreshTokenService(IRefreshTokenRepository refreshTokenRepository, IUserRepository userRepository, IJwtProvider jwtProvider, IRng rng) {
-			_refreshTokenRepository = refreshTokenRepository;
-			_userRepository = userRepository;
-			_jwtProvider = jwtProvider;
-			_rng = rng;
-		}
-		
-		public async Task<string> CreateAsync(Guid userId) {
-			var token = _rng.Generate(30, true);
-			var refreshToken = new RefreshToken(new AggregateId(), userId, token, DateTime.UtcNow);
-			await _refreshTokenRepository.AddAsync(refreshToken);
+    public class RefreshTokenService : IRefreshTokenService {
+        private readonly IJwtProvider _jwtProvider;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
+        private readonly IRng _rng;
+        private readonly IUserRepository _userRepository;
 
-			return token;
-		}
+        public RefreshTokenService(IRefreshTokenRepository refreshTokenRepository, IUserRepository userRepository,
+            IJwtProvider jwtProvider, IRng rng) {
+            _refreshTokenRepository = refreshTokenRepository;
+            _userRepository = userRepository;
+            _jwtProvider = jwtProvider;
+            _rng = rng;
+        }
 
-		public async Task RevokeAsync(string refreshToken) {
-			var token = await _refreshTokenRepository.GetAsync(refreshToken);
-			if (token is null) 
-				throw new InvalidRefreshTokenException();
+        public async Task<string> CreateAsync(Guid userId) {
+            var token = _rng.Generate(30, true);
+            var refreshToken = new RefreshToken(new AggregateId(), userId, token, DateTime.UtcNow);
+            await _refreshTokenRepository.AddAsync(refreshToken);
 
-			token.Revoke(DateTime.UtcNow);
-			await _refreshTokenRepository.UpdateAsync(token);
-		}
+            return token;
+        }
 
-		public async Task<AuthDto> UseAsync(string refreshToken) {
-			var token = await _refreshTokenRepository.GetAsync(refreshToken);
-			if (token is null)
-				throw new InvalidRefreshTokenException();
+        public async Task RevokeAsync(string refreshToken) {
+            var token = await _refreshTokenRepository.GetAsync(refreshToken);
+            if (token is null)
+                throw new InvalidRefreshTokenException();
 
-			if (token.Revoked)
-				throw new RevokedRefreshTokenException();
+            token.Revoke(DateTime.UtcNow);
+            await _refreshTokenRepository.UpdateAsync(token);
+        }
 
-			var user = await _userRepository.GetAsync(token.UserId);
-			if (user is null)
-				throw new UserNotFoundException(token.UserId);
+        public async Task<AuthDto> UseAsync(string refreshToken) {
+            var token = await _refreshTokenRepository.GetAsync(refreshToken);
+            if (token is null)
+                throw new InvalidRefreshTokenException();
 
-			var claims = user.Permissions.Any()
-				? new Dictionary<string, IEnumerable<string>> {
-					["permissions"] = user.Permissions
-				}
-				: null;
+            if (token.Revoked)
+                throw new RevokedRefreshTokenException();
 
-			var auth = _jwtProvider.Create(token.UserId, user.Role, claims: claims);
-			auth.RefreshToken = refreshToken;
-			return auth;
-		}
-	}
+            var user = await _userRepository.GetAsync(token.UserId);
+            if (user is null)
+                throw new UserNotFoundException(token.UserId);
+
+            var claims = user.Permissions.Any()
+                ? new Dictionary<string, IEnumerable<string>> {
+                    ["permissions"] = user.Permissions
+                }
+                : null;
+
+            var auth = _jwtProvider.Create(token.UserId, user.Role, claims: claims);
+            auth.RefreshToken = refreshToken;
+            return auth;
+        }
+    }
 }
