@@ -17,7 +17,7 @@ generateRequestId: true
 generateTraceId: true
 useLocalUrl: false
 loadBalancer:
-  enabled: false
+  enabled: true
   url: fabio:9999
 
 extensions:
