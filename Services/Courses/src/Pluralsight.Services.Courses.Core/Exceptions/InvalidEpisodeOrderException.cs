@@ -2,7 +2,8 @@
 {
     public class InvalidEpisodeOrderException : DomainException
     {
-        public InvalidEpisodeOrderException(string episodeName) : base($"Invalid episode order value for episode: {episodeName}")
+        public InvalidEpisodeOrderException(string episodeName) : base(
+            $"Invalid episode order value for episode: {episodeName}")
         {
         }
 

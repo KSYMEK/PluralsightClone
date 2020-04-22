@@ -1,6 +1,8 @@
-namespace Pluralsight.Services.Identity.Application {
+namespace Pluralsight.Services.Identity.Application
+{
     using System;
 
-    public class ContractAttribute : Attribute {
+    public class ContractAttribute : Attribute
+    {
     }
 }

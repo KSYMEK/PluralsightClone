@@ -1,4 +1,6 @@
-namespace Pluralsight.Services.Courses.Core.Entities {
-    public interface IDomainEvent {
+namespace Pluralsight.Services.Courses.Core.Entities
+{
+    public interface IDomainEvent
+    {
     }
 }

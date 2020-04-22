@@ -1,12 +1,15 @@
-namespace Pluralsight.Services.Identity.Core.Entities {
+namespace Pluralsight.Services.Identity.Core.Entities
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Exceptions;
 
-    public class User : AggregateRoot {
+    public class User : AggregateRoot
+    {
         public User(Guid id, string email, string password, string role, DateTime createdAt,
-            IEnumerable<string> permissions = null) {
+            IEnumerable<string> permissions = null)
+        {
             if (string.IsNullOrEmpty(email))
                 throw new InvalidEmailException(email);
             if (string.IsNullOrEmpty(password))

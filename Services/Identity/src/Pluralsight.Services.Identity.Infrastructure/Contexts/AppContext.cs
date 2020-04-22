@@ -1,16 +1,21 @@
-namespace Pluralsight.Services.Identity.Infrastructure.Contexts {
+namespace Pluralsight.Services.Identity.Infrastructure.Contexts
+{
     using System;
     using Application;
 
-    public class AppContext : IAppContext {
-        internal AppContext() : this(Guid.NewGuid().ToString("N"), IdentityContext.Empty) {
+    public class AppContext : IAppContext
+    {
+        internal AppContext() : this(Guid.NewGuid().ToString("N"), IdentityContext.Empty)
+        {
         }
 
         internal AppContext(CorrelationContext context) : this(context.CorrelationId,
-            context.User is null ? IdentityContext.Empty : new IdentityContext(context.User)) {
+            context.User is null ? IdentityContext.Empty : new IdentityContext(context.User))
+        {
         }
 
-        internal AppContext(string requestId, IIdentityContext identity) {
+        internal AppContext(string requestId, IIdentityContext identity)
+        {
             RequestId = requestId;
             Identity = identity;
         }

@@ -1,8 +1,11 @@
-namespace Pluralsight.Services.Identity.Application.Exceptions {
+namespace Pluralsight.Services.Identity.Application.Exceptions
+{
     using System;
 
-    public class UserNotFoundException : AppException {
-        public UserNotFoundException(Guid userId) : base($"User with ID: {userId} was not found.") {
+    public class UserNotFoundException : AppException
+    {
+        public UserNotFoundException(Guid userId) : base($"User with ID: {userId} was not found.")
+        {
             UserId = userId;
         }
 

@@ -1,31 +1,58 @@
-﻿using System;
-using System.Threading.Tasks;
-using Convey.Persistence.MongoDB;
-using Pluralsight.Services.Courses.Core.Entities;
-using Pluralsight.Services.Courses.Core.Repositories;
-using Pluralsight.Services.Courses.Infrastructure.Mongo.Documents;
-
-namespace Pluralsight.Services.Courses.Infrastructure.Mongo.Repositories
+﻿namespace Pluralsight.Services.Courses.Infrastructure.Mongo.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Convey.Persistence.MongoDB;
+    using Core.Entities;
+    using Core.Repositories;
+    using Documents;
+
     public class CourseModuleRepository : ICourseModuleRepository
     {
+        private readonly ICourseRepository _courseRepository;
         private readonly IMongoRepository<CourseModuleDocument, Guid> _repository;
 
-        public CourseModuleRepository(IMongoRepository<CourseModuleDocument, Guid> repository)
+        public CourseModuleRepository(IMongoRepository<CourseModuleDocument, Guid> repository,
+            ICourseRepository courseRepository)
         {
             _repository = repository;
+            _courseRepository = courseRepository;
         }
-        
+
         public async Task<CourseModule> GetAsync(Guid id)
         {
             var result = await _repository.GetAsync(id);
             return result.AsEntity();
         }
+        
+        public async Task<IEnumerable<CourseModule>> GetAllAsync(Guid courseId)
+        {
+            var course = await _courseRepository.GetAsync(courseId);
+            return course.Modules.ToList();
+        }
 
-        public async Task AddAsync(CourseModule courseModule) => await _repository.AddAsync(courseModule.AsDocument());
+        public async Task AddAsync(CourseModule courseModule, Guid courseId)
+        {
+            await _repository.AddAsync(courseModule.AsDocument());
+            var course = await _courseRepository.GetAsync(courseId);
+            course.Modules.ToList().Add(courseModule);
+            await _courseRepository.UpdateAsync(course);
+        }
 
-        public async Task UpdateAsync(CourseModule courseModule) => await _repository.UpdateAsync(courseModule.AsDocument());
+        public async Task UpdateAsync(CourseModule courseModule)
+        {
+            await _repository.UpdateAsync(courseModule.AsDocument());
+        }
 
-        public async Task RemoveAsync(Guid id) => await _repository.DeleteAsync(id);
+        public async Task RemoveAsync(Guid id, Guid courseId)
+        {
+            var course = await _courseRepository.GetAsync(courseId);
+            var courseModule = await _repository.GetAsync(id);
+            course.Modules.ToList().Remove(courseModule.AsEntity());
+            await _courseRepository.UpdateAsync(course);
+            await _repository.DeleteAsync(id);
+        }
     }
 }

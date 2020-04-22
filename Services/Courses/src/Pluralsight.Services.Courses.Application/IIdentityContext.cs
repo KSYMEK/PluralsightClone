@@ -1,8 +1,10 @@
-using System;
-using System.Collections.Generic;
+namespace Pluralsight.Services.Courses.Application
+{
+    using System;
+    using System.Collections.Generic;
 
-namespace Pluralsight.Services.Courses.Application {
-    public interface IIdentityContext {
+    public interface IIdentityContext
+    {
         Guid Id { get; }
         string Role { get; }
         bool IsAuthenticated { get; }

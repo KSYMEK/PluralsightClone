@@ -10,6 +10,17 @@ services:
     networks:
       - pluralsight  
 
+  courses-service:
+    build: ../Services/Courses
+    container_name: courses-service
+    restart: unless-stopped
+    ports:
+      - 5002:80
+    networks:
+      - pluralsight
+    depends_on:
+      - api-gateway  
+
   identity-service:
     build: ../Services/Identity
     container_name: identity-service

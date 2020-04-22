@@ -1,7 +1,9 @@
-﻿namespace Pluralsight.APIGateway.Infrastructure {
+﻿namespace Pluralsight.APIGateway.Infrastructure
+{
     using System;
 
-    internal class CorrelationContext {
+    internal class CorrelationContext
+    {
         public string CorrelationId { get; set; }
         public string SpanContext { get; set; }
         public UserContext User { get; set; }

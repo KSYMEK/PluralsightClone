@@ -1,4 +1,5 @@
-﻿namespace Pluralsight.APIGateway.Infrastructure {
+﻿namespace Pluralsight.APIGateway.Infrastructure
+{
     using System;
     using System.Linq;
     using System.Security.Claims;
@@ -6,14 +7,17 @@
     using Ntrada.Extensions.RabbitMq;
     using OpenTracing;
 
-    public class CorrelationContextBuilder : IContextBuilder {
+    public class CorrelationContextBuilder : IContextBuilder
+    {
         private readonly IServiceProvider _serviceProvider;
 
-        public CorrelationContextBuilder(IServiceProvider serviceProvider) {
+        public CorrelationContextBuilder(IServiceProvider serviceProvider)
+        {
             _serviceProvider = serviceProvider;
         }
 
-        public object Build(ExecutionData executionData) {
+        public object Build(ExecutionData executionData)
+        {
             var tracer = _serviceProvider.GetService(typeof(ITracer)) as ITracer;
             var spanContext = tracer is null ? string.Empty :
                 tracer.ActiveSpan is null ? string.Empty : tracer.ActiveSpan.Context.ToString();
@@ -27,9 +31,11 @@
             if (string.IsNullOrWhiteSpace(name))
                 name = $"{executionData.Context.Request.Method} {executionData.Context.Request.Path}";
 
-            return new CorrelationContext {
+            return new CorrelationContext
+            {
                 CorrelationId = executionData.RequestId,
-                User = new UserContext {
+                User = new UserContext
+                {
                     Id = executionData.UserId,
                     Claims = executionData.Claims,
                     Role = executionData.Claims.FirstOrDefault(c => c.Key == ClaimTypes.Role).Value,

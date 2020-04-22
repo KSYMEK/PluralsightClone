@@ -1,10 +1,13 @@
-namespace Pluralsight.Services.Identity.Application {
+namespace Pluralsight.Services.Identity.Application
+{
     using Convey;
     using Convey.CQRS.Commands;
     using Convey.CQRS.Events;
 
-    public static class Extensions {
-        public static IConveyBuilder AddApplication(this IConveyBuilder builder) {
+    public static class Extensions
+    {
+        public static IConveyBuilder AddApplication(this IConveyBuilder builder)
+        {
             return builder.AddCommandHandlers()
                 .AddEventHandlers()
                 .AddInMemoryCommandDispatcher()

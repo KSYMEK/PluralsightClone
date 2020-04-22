@@ -1,13 +1,17 @@
-using System;
-using System.Net;
-using Convey.WebApi.Exceptions;
-using Pluralsight.Services.Courses.Application.Exceptions;
-using Pluralsight.Services.Courses.Core.Exceptions;
+namespace Pluralsight.Services.Courses.Infrastructure.Exceptions
+{
+    using System;
+    using System.Net;
+    using Application.Exceptions;
+    using Convey.WebApi.Exceptions;
+    using Core.Exceptions;
 
-namespace Pluralsight.Services.Courses.Infrastructure.Exceptions {
-    public class ExceptionToResponseMapper : IExceptionToResponseMapper {
-        public ExceptionResponse Map(Exception exception) {
-            return exception switch {
+    public class ExceptionToResponseMapper : IExceptionToResponseMapper
+    {
+        public ExceptionResponse Map(Exception exception)
+        {
+            return exception switch
+            {
                 DomainException ex => new ExceptionResponse(new {code = ex.Code, reason = ex.Message},
                     HttpStatusCode.BadRequest),
                 AppException ex => new ExceptionResponse(new {code = ex.Code, reason = ex.Message},

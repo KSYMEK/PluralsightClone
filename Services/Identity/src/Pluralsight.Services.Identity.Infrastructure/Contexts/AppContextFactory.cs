@@ -1,21 +1,26 @@
-namespace Pluralsight.Services.Identity.Infrastructure.Contexts {
+namespace Pluralsight.Services.Identity.Infrastructure.Contexts
+{
     using Application;
     using Convey.MessageBrokers;
     using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;
 
-    public class AppContextFactory : IAppContextFactory {
+    public class AppContextFactory : IAppContextFactory
+    {
         private readonly ICorrelationContextAccessor _contextAccessor;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public AppContextFactory(ICorrelationContextAccessor contextAccessor,
-            IHttpContextAccessor httpContextAccessor) {
+            IHttpContextAccessor httpContextAccessor)
+        {
             _contextAccessor = contextAccessor;
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public IAppContext Create() {
-            if (_contextAccessor.CorrelationContext is {}) {
+        public IAppContext Create()
+        {
+            if (_contextAccessor.CorrelationContext is {})
+            {
                 var payload = JsonConvert.SerializeObject(_contextAccessor.CorrelationContext);
 
                 return string.IsNullOrWhiteSpace(payload)

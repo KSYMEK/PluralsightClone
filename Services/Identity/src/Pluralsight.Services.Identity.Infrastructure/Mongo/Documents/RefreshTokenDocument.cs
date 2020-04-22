@@ -1,8 +1,10 @@
-﻿namespace Pluralsight.Services.Identity.Infrastructure.Mongo.Documents {
+﻿namespace Pluralsight.Services.Identity.Infrastructure.Mongo.Documents
+{
     using System;
     using Convey.Types;
 
-    internal sealed class RefreshTokenDocument : IIdentifiable<Guid> {
+    internal sealed class RefreshTokenDocument : IIdentifiable<Guid>
+    {
         public Guid UserId { get; set; }
         public string Token { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Convey.CQRS.Events;
-using Pluralsight.Services.Courses.Core.Entities;
-
-namespace Pluralsight.Services.Courses.Application.Services
+﻿namespace Pluralsight.Services.Courses.Application.Services
 {
+    using System.Collections.Generic;
+    using Convey.CQRS.Events;
+    using Core.Entities;
+
     public interface IEventMapper
     {
         IEvent Map(IDomainEvent @event);

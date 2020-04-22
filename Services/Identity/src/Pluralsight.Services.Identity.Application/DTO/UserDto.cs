@@ -1,13 +1,17 @@
-namespace Pluralsight.Services.Identity.Application.DTO {
+namespace Pluralsight.Services.Identity.Application.DTO
+{
     using System;
     using System.Collections.Generic;
     using Core.Entities;
 
-    public class UserDto {
-        public UserDto() {
+    public class UserDto
+    {
+        public UserDto()
+        {
         }
 
-        public UserDto(User user) {
+        public UserDto(User user)
+        {
             Id = user.Id;
             Email = user.Email;
             Role = user.Role;

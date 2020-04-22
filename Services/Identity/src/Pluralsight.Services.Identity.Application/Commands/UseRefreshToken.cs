@@ -1,8 +1,12 @@
-namespace Pluralsight.Services.Identity.Application.Commands {
+namespace Pluralsight.Services.Identity.Application.Commands
+{
     using Convey.CQRS.Commands;
 
-    public class UseRefreshToken : ICommand {
-        public UseRefreshToken(string refreshToken) {
+    [Contract]
+    public class UseRefreshToken : ICommand
+    {
+        public UseRefreshToken(string refreshToken)
+        {
             RefreshToken = refreshToken;
         }
 

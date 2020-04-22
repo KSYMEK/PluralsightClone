@@ -1,7 +1,9 @@
-namespace Pluralsight.Services.Identity.Infrastructure {
+namespace Pluralsight.Services.Identity.Infrastructure
+{
     using Application;
 
-    public interface IAppContextFactory {
+    public interface IAppContextFactory
+    {
         IAppContext Create();
     }
 }

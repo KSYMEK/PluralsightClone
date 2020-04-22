@@ -1,4 +1,5 @@
-namespace Pluralsight.Services.Identity.Application.Services.Identity {
+namespace Pluralsight.Services.Identity.Application.Services.Identity
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -12,7 +13,8 @@ namespace Pluralsight.Services.Identity.Application.Services.Identity {
     using Events;
     using Microsoft.Extensions.Logging;
 
-    public class IdentityService : IIdentityService {
+    public class IdentityService : IIdentityService
+    {
         private static readonly Regex EmailRegex = new Regex(
             @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
             @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
@@ -27,7 +29,8 @@ namespace Pluralsight.Services.Identity.Application.Services.Identity {
 
         public IdentityService(IUserRepository userRepository, IPasswordService passwordService,
             IJwtProvider jwtProvider,
-            IRefreshTokenService refreshTokenService, IMessageBroker messageBroker, ILogger<IdentityService> logger) {
+            IRefreshTokenService refreshTokenService, IMessageBroker messageBroker, ILogger<IdentityService> logger)
+        {
             _userRepository = userRepository;
             _passwordService = passwordService;
             _jwtProvider = jwtProvider;
@@ -36,30 +39,36 @@ namespace Pluralsight.Services.Identity.Application.Services.Identity {
             _logger = logger;
         }
 
-        public async Task<UserDto> GetAsync(Guid id) {
+        public async Task<UserDto> GetAsync(Guid id)
+        {
             var user = await _userRepository.GetAsync(id);
             return user is null ? null : new UserDto(user);
         }
 
-        public async Task<AuthDto> SignInAsync(SignIn command) {
-            if (!EmailRegex.IsMatch(command.Email)) {
+        public async Task<AuthDto> SignInAsync(SignIn command)
+        {
+            if (!EmailRegex.IsMatch(command.Email))
+            {
                 _logger.LogError($"Invalid email: {command.Email}.");
                 throw new InvalidEmailException(command.Email);
             }
 
             var user = await _userRepository.GetAsync(command.Email);
-            if (user is null) {
+            if (user is null)
+            {
                 _logger.LogError($"User with email: {command.Email} was not found.");
                 throw new InvalidCredentialsException(command.Email);
             }
 
-            if (!_passwordService.IsValid(user.Password, command.Password)) {
+            if (!_passwordService.IsValid(user.Password, command.Password))
+            {
                 _logger.LogError($"Invalid password for user with id: {user.Id.Value}.");
                 throw new InvalidCredentialsException(command.Email);
             }
 
             var claims = user.Permissions.Any()
-                ? new Dictionary<string, IEnumerable<string>> {
+                ? new Dictionary<string, IEnumerable<string>>
+                {
                     ["permissions"] = user.Permissions
                 }
                 : null;
@@ -71,14 +80,17 @@ namespace Pluralsight.Services.Identity.Application.Services.Identity {
             return auth;
         }
 
-        public async Task SignUpAsync(SignUp command) {
-            if (!EmailRegex.IsMatch(command.Email)) {
+        public async Task SignUpAsync(SignUp command)
+        {
+            if (!EmailRegex.IsMatch(command.Email))
+            {
                 _logger.LogError($"Invalid email: {command.Email}");
                 throw new InvalidEmailException(command.Email);
             }
 
             var user = await _userRepository.GetAsync(command.Email);
-            if (user != null) {
+            if (user != null)
+            {
                 _logger.LogError($"Email already in use: {command.Email}.");
                 throw new EmailInUseException(command.Email);
             }

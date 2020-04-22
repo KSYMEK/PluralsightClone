@@ -2,7 +2,8 @@
 {
     public class InvalidModuleIdForEpisodeException : DomainException
     {
-        public InvalidModuleIdForEpisodeException(string episodeName) : base($"Invalid module ID for episode called {episodeName}.")
+        public InvalidModuleIdForEpisodeException(string episodeName) : base(
+            $"Invalid module ID for episode called {episodeName}.")
         {
         }
 

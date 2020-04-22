@@ -47,6 +47,31 @@ extensions:
     validateIssuer: true
     validateLifetime: true
 
+  rabbitmq:
+    enabled: true
+    connectionName: api-gateway
+    hostnames:
+      - rabbitmq
+    port: 5672
+    virtualHost: /
+    username: guest
+    password: guest
+    requestedConnectionTimeout: 3000
+    socketReadTimeout: 3000
+    socketWriteTimeout: 3000
+    requestedHeartbeat: 60
+    exchange:
+      declareExchange: true
+      durable: true
+      autoDelete: false
+      type: topic
+    messageContext:
+      enabled: true
+      header: message_context
+    logger:
+      enabled: true
+    spanContextHeader: span_context
+
   swagger:
     name: Pluralsight
     reDocEnabled: false
@@ -71,6 +96,39 @@ modules:
         use: return_value
         returnValue: Welcome to Pluralsight API!
 
+  courses:
+    path: courses
+    routes:
+      - upstream: /
+        method: GET
+        use: downstream
+        downstream: courses-service/courses
+        auth: false
+        responseHeaders:
+          content-type: application/json
+          
+      - upstream: /{courseId}
+        method: GET
+        use: downstream
+        downstream: courses-service/courses/{courseId}
+        auth: false
+        bind:
+          - courseId:{courseId}
+            
+      - upstream: /
+        method: POST
+        use: downstream
+        downstream: courses-service/courses
+        auth: true
+        resourceId:
+          property: courseId
+          generate: true
+        
+    services:
+      courses-service:
+        localUrl: localhost:5002
+        url: courses-service
+  
   identity:
     path: identity
     routes:

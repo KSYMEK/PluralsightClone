@@ -1,13 +1,17 @@
-namespace Pluralsight.Services.Identity.Core.Entities {
+namespace Pluralsight.Services.Identity.Core.Entities
+{
     using System;
     using Exceptions;
 
-    public class AggregateId : IEquatable<AggregateId> {
-        public AggregateId() {
+    public class AggregateId : IEquatable<AggregateId>
+    {
+        public AggregateId()
+        {
             Value = Guid.NewGuid();
         }
 
-        public AggregateId(Guid value) {
+        public AggregateId(Guid value)
+        {
             if (value == Guid.Empty) throw new InvalidAggregateIdException();
 
             Value = value;
@@ -15,30 +19,36 @@ namespace Pluralsight.Services.Identity.Core.Entities {
 
         public Guid Value { get; }
 
-        public bool Equals(AggregateId other) {
+        public bool Equals(AggregateId other)
+        {
             if (ReferenceEquals(null, other)) return false;
             return ReferenceEquals(this, other) || Value.Equals(other.Value);
         }
 
-        public override bool Equals(object obj) {
+        public override bool Equals(object obj)
+        {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             return obj.GetType() == GetType() && Equals((AggregateId) obj);
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             return Value.GetHashCode();
         }
 
-        public static implicit operator Guid(AggregateId id) {
+        public static implicit operator Guid(AggregateId id)
+        {
             return id.Value;
         }
 
-        public static implicit operator AggregateId(Guid id) {
+        public static implicit operator AggregateId(Guid id)
+        {
             return new AggregateId(id);
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return Value.ToString();
         }
     }

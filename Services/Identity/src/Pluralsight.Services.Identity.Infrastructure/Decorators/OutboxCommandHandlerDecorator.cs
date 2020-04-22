@@ -1,4 +1,5 @@
-namespace Pluralsight.Services.Identity.Infrastructure.Decorators {
+namespace Pluralsight.Services.Identity.Infrastructure.Decorators
+{
     using System;
     using System.Threading.Tasks;
     using Convey.CQRS.Commands;
@@ -6,14 +7,16 @@ namespace Pluralsight.Services.Identity.Infrastructure.Decorators {
     using Convey.MessageBrokers.Outbox;
 
     internal sealed class OutboxCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand>
-        where TCommand : class, ICommand {
+        where TCommand : class, ICommand
+    {
         private readonly bool _enabled;
         private readonly ICommandHandler<TCommand> _handler;
         private readonly string _messageId;
         private readonly IMessageOutbox _outbox;
 
         public OutboxCommandHandlerDecorator(ICommandHandler<TCommand> handler, IMessageOutbox outbox,
-            OutboxOptions outboxOptions, IMessagePropertiesAccessor messagePropertiesAccessor) {
+            OutboxOptions outboxOptions, IMessagePropertiesAccessor messagePropertiesAccessor)
+        {
             _handler = handler;
             _outbox = outbox;
             _enabled = outboxOptions.Enabled;
@@ -24,7 +27,8 @@ namespace Pluralsight.Services.Identity.Infrastructure.Decorators {
                 : messageProperties.MessageId;
         }
 
-        public Task HandleAsync(TCommand command) {
+        public Task HandleAsync(TCommand command)
+        {
             return _enabled
                 ? _outbox.HandleAsync(_messageId, () => _handler.HandleAsync(command))
                 : _handler.HandleAsync(command);

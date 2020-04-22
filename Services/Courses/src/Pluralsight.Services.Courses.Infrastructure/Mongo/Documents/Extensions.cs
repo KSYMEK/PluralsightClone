@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Pluralsight.Services.Courses.Application.DTO;
-using Pluralsight.Services.Courses.Core.Entities;
-
-namespace Pluralsight.Services.Courses.Infrastructure.Mongo.Documents
+﻿namespace Pluralsight.Services.Courses.Infrastructure.Mongo.Documents
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Application.DTO;
+    using Core.Entities;
+
     public static class Extensions
     {
         public static Course AsEntity(this CourseDocument document)

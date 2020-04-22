@@ -1,4 +1,5 @@
-namespace Pluralsight.APIGateway {
+namespace Pluralsight.APIGateway
+{
     using System;
     using System.Linq;
     using System.Threading.Tasks;
@@ -14,16 +15,21 @@ namespace Pluralsight.APIGateway {
     using Ntrada.Extensions.RabbitMq;
     using Ntrada.Hooks;
 
-    public class Program {
-        public static Task Main(string[] args) {
+    public class Program
+    {
+        public static Task Main(string[] args)
+        {
             return CreateHostBuilder(args).Build().RunAsync();
         }
 
 
-        public static IHostBuilder CreateHostBuilder(string[] args) {
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
             return Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => {
-                    webBuilder.ConfigureAppConfiguration(builder => {
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.ConfigureAppConfiguration(builder =>
+                        {
                             const string extension = "yml";
                             var ntradaConfig = Environment.GetEnvironmentVariable("NTRADA_CONFIG");
                             var configPath = args?.FirstOrDefault() ?? ntradaConfig ?? $"ntrada.{extension}";

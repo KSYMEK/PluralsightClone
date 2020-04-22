@@ -2,7 +2,8 @@
 {
     public class InvalidCourseIdForModuleException : DomainException
     {
-        public InvalidCourseIdForModuleException(string moduleName) : base($"Invalid course ID for course module: {moduleName}")
+        public InvalidCourseIdForModuleException(string moduleName) : base(
+            $"Invalid course ID for course module: {moduleName}")
         {
         }
 

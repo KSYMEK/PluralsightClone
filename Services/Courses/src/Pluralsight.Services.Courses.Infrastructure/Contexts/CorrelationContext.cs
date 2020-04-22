@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Pluralsight.Services.Courses.Infrastructure.Contexts
+﻿namespace Pluralsight.Services.Courses.Infrastructure.Contexts
 {
+    using System;
+    using System.Collections.Generic;
+
     internal class CorrelationContext
     {
         public string CorrelationId { get; set; }

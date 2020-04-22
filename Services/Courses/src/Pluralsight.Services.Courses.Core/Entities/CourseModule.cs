@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using Pluralsight.Services.Courses.Core.Exceptions;
-
-namespace Pluralsight.Services.Courses.Core.Entities
+﻿namespace Pluralsight.Services.Courses.Core.Entities
 {
+    using System;
+    using System.Collections.Generic;
+    using Exceptions;
+
     public class CourseModule : AggregateRoot
     {
-        public Guid CourseId { get; }
-        public string ModuleName { get; }
-        
-        public string Description { get; }
-        public IEnumerable<CourseEpisode> Episodes { get; }
-        public int ModuleOrder { get; }
-
-        public CourseModule(Guid id, Guid courseId, string moduleName, int moduleOrder, string description, IEnumerable<CourseEpisode> episodes = null)
+        public CourseModule(Guid id, Guid courseId, string moduleName, int moduleOrder, string description,
+            IEnumerable<CourseEpisode> episodes = null)
         {
             if (string.IsNullOrWhiteSpace(moduleName))
                 throw new InvalidModuleNameException();
@@ -23,7 +17,7 @@ namespace Pluralsight.Services.Courses.Core.Entities
 
             if (moduleOrder <= 0)
                 throw new InvalidModuleOrderValueException(moduleName);
-            
+
             Id = id;
             CourseId = courseId;
             Description = description;
@@ -31,5 +25,12 @@ namespace Pluralsight.Services.Courses.Core.Entities
             ModuleOrder = moduleOrder;
             Episodes = episodes ?? new List<CourseEpisode>();
         }
+
+        public Guid CourseId { get; }
+        public string ModuleName { get; }
+
+        public string Description { get; }
+        public IEnumerable<CourseEpisode> Episodes { get; }
+        public int ModuleOrder { get; }
     }
 }

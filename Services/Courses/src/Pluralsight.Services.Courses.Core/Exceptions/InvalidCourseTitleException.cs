@@ -2,7 +2,7 @@
 {
     public class InvalidCourseTitleException : DomainException
     {
-        public InvalidCourseTitleException() : base($"Invalid course title.")
+        public InvalidCourseTitleException() : base("Invalid course title.")
         {
         }
 

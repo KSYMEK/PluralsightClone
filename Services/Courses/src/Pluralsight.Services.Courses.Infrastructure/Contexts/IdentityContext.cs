@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Pluralsight.Services.Courses.Application;
-
-namespace Pluralsight.Services.Courses.Infrastructure.Contexts
+﻿namespace Pluralsight.Services.Courses.Infrastructure.Contexts
 {
+    using System;
+    using System.Collections.Generic;
+    using Application;
+
     internal class IdentityContext : IIdentityContext
     {
-        public Guid Id { get; }
-        public string Role { get; } = string.Empty;
-        public bool IsAuthenticated { get; }
-        public bool IsAdmin { get; }
-        public IDictionary<string, string> Claims { get; } = new Dictionary<string, string>();
-
         internal IdentityContext()
         {
         }
@@ -29,7 +23,12 @@ namespace Pluralsight.Services.Courses.Infrastructure.Contexts
             IsAdmin = Role.Equals("admin", StringComparison.InvariantCultureIgnoreCase);
             Claims = claims ?? new Dictionary<string, string>();
         }
-        
+
         internal static IIdentityContext Empty => new IdentityContext();
+        public Guid Id { get; }
+        public string Role { get; } = string.Empty;
+        public bool IsAuthenticated { get; }
+        public bool IsAdmin { get; }
+        public IDictionary<string, string> Claims { get; } = new Dictionary<string, string>();
     }
 }

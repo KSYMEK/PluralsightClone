@@ -2,7 +2,8 @@
 {
     public class CourseNameAlreadyExistsException : AppException
     {
-        public CourseNameAlreadyExistsException(string courseName) : base($"Course with name '{courseName}' already exists.")
+        public CourseNameAlreadyExistsException(string courseName) : base(
+            $"Course with name '{courseName}' already exists.")
         {
         }
 

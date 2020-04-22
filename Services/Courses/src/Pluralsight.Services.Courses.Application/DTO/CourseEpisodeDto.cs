@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Pluralsight.Services.Courses.Application.DTO
+﻿namespace Pluralsight.Services.Courses.Application.DTO
 {
+    using System;
+
     public class CourseEpisodeDto
     {
         public Guid Id { get; set; }

@@ -1,4 +1,5 @@
-﻿namespace Pluralsight.Services.Identity.Infrastructure.Mongo {
+﻿namespace Pluralsight.Services.Identity.Infrastructure.Mongo
+{
     using System;
     using System.Threading.Tasks;
     using Convey.Persistence.MongoDB;
@@ -7,15 +8,18 @@
     using Microsoft.Extensions.DependencyInjection;
     using MongoDB.Driver;
 
-    public static class Extensions {
-        public static IApplicationBuilder UseMongo(this IApplicationBuilder builder) {
+    public static class Extensions
+    {
+        public static IApplicationBuilder UseMongo(this IApplicationBuilder builder)
+        {
             using var scope = builder.ApplicationServices.CreateScope();
             var users = scope.ServiceProvider.GetService<IMongoRepository<UserDocument, Guid>>().Collection;
             var userBuilder = Builders<UserDocument>.IndexKeys;
             Task.Run(async () =>
                 await users.Indexes.CreateOneAsync(
                     new CreateIndexModel<UserDocument>(userBuilder.Ascending(i => i.Email),
-                        new CreateIndexOptions {
+                        new CreateIndexOptions
+                        {
                             Unique = true
                         })));
 

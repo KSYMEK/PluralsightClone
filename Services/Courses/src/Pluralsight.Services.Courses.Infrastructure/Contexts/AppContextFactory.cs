@@ -1,10 +1,10 @@
-﻿using Convey.MessageBrokers;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using Pluralsight.Services.Courses.Application;
-
-namespace Pluralsight.Services.Courses.Infrastructure.Contexts
+﻿namespace Pluralsight.Services.Courses.Infrastructure.Contexts
 {
+    using Application;
+    using Convey.MessageBrokers;
+    using Microsoft.AspNetCore.Http;
+    using Newtonsoft.Json;
+
     internal sealed class AppContextFactory : IAppContextFactory
     {
         private readonly ICorrelationContextAccessor _contextAccessor;
@@ -28,7 +28,7 @@ namespace Pluralsight.Services.Courses.Infrastructure.Contexts
             }
 
             var context = _httpContextAccessor.GetCorrelationContext();
-            
+
             return context is null ? AppContext.Empty : new AppContext(context);
         }
     }

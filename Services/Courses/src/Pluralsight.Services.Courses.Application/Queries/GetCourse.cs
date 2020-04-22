@@ -1,9 +1,9 @@
-﻿using System;
-using Convey.CQRS.Queries;
-using Pluralsight.Services.Courses.Application.DTO;
-
-namespace Pluralsight.Services.Courses.Application.Queries
+﻿namespace Pluralsight.Services.Courses.Application.Queries
 {
+    using System;
+    using Convey.CQRS.Queries;
+    using DTO;
+
     public class GetCourse : IQuery<CourseDto>
     {
         public Guid CourseId { get; set; }

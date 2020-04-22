@@ -1,13 +1,13 @@
-﻿using System;
-
-namespace Pluralsight.Services.Courses.Application.Exceptions
+﻿namespace Pluralsight.Services.Courses.Application.Exceptions
 {
+    using System;
+
     public abstract class AppException : Exception
     {
-        public abstract string Code { get; }
-
         protected AppException(string message) : base(message)
         {
         }
+
+        public abstract string Code { get; }
     }
 }

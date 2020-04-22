@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Convey.CQRS.Queries;
-using Pluralsight.Services.Courses.Application.DTO;
-
-namespace Pluralsight.Services.Courses.Application.Queries
+﻿namespace Pluralsight.Services.Courses.Application.Queries
 {
+    using System.Collections.Generic;
+    using Convey.CQRS.Queries;
+    using DTO;
+
     public class GetCourses : IQuery<IEnumerable<CourseDto>>
     {
     }

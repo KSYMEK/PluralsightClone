@@ -2,7 +2,8 @@
 {
     public class InvalidModuleOrderValueException : DomainException
     {
-        public InvalidModuleOrderValueException(string moduleName) : base($"Invalid module order value for module: {moduleName}")
+        public InvalidModuleOrderValueException(string moduleName) : base(
+            $"Invalid module order value for module: {moduleName}")
         {
         }
 

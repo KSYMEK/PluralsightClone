@@ -1,10 +1,13 @@
-namespace Pluralsight.Services.Identity.Application.Events {
+namespace Pluralsight.Services.Identity.Application.Events
+{
     using System;
     using Convey.CQRS.Events;
 
     [Contract]
-    public class SignedUp : IEvent {
-        public SignedUp(Guid userId, string email, string role) {
+    public class SignedUp : IEvent
+    {
+        public SignedUp(Guid userId, string email, string role)
+        {
             UserId = userId;
             Email = email;
             Role = role;

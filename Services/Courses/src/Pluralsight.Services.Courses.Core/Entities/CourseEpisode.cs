@@ -1,17 +1,12 @@
-﻿using System;
-using Pluralsight.Services.Courses.Core.Exceptions;
-
-namespace Pluralsight.Services.Courses.Core.Entities
+﻿namespace Pluralsight.Services.Courses.Core.Entities
 {
+    using System;
+    using Exceptions;
+
     public class CourseEpisode : AggregateRoot
     {
-        public Guid ModuleId { get; }
-        public string EpisodeName { get; }
-        public string EpisodeVideoLink { get; }
-        public string Description { get; }
-        public int EpisodeOrder { get; }
-
-        public CourseEpisode(Guid id, Guid moduleId, string episodeName, int episodeOrder, string episodeVideoLink, string description = null)
+        public CourseEpisode(Guid id, Guid moduleId, string episodeName, int episodeOrder, string episodeVideoLink,
+            string description = null)
         {
             if (string.IsNullOrWhiteSpace(episodeName))
                 throw new InvalidEpisodeNameException();
@@ -32,5 +27,11 @@ namespace Pluralsight.Services.Courses.Core.Entities
             EpisodeVideoLink = episodeVideoLink;
             Description = description;
         }
+
+        public Guid ModuleId { get; }
+        public string EpisodeName { get; }
+        public string EpisodeVideoLink { get; }
+        public string Description { get; }
+        public int EpisodeOrder { get; }
     }
 }

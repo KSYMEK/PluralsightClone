@@ -1,8 +1,10 @@
-namespace Pluralsight.Services.Identity.Core.Repositories {
+namespace Pluralsight.Services.Identity.Core.Repositories
+{
     using System.Threading.Tasks;
     using Entities;
 
-    public interface IRefreshTokenRepository {
+    public interface IRefreshTokenRepository
+    {
         Task<RefreshToken> GetAsync(string token);
         Task AddAsync(RefreshToken token);
         Task UpdateAsync(RefreshToken token);

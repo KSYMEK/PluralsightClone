@@ -9,7 +9,27 @@
       <Content Remove="Controllers\**" />
       <EmbeddedResource Remove="Controllers\**" />
       <None Remove="Controllers\**" />
+      <Content Update="appsettings.docker.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="appsettings.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Pluralsight.Services.Courses.Infrastructure\Pluralsight.Services.Courses.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Convey" Version="0.4.*" />
+        <PackageReference Include="Convey.Logging" Version="0.4.*" />
+        <PackageReference Include="Convey.WebApi" Version="0.4.*" />
+        <PackageReference Include="Convey.WebApi.CQRS" Version="0.4.*" />
+    </ItemGroup>
 
 </Project>

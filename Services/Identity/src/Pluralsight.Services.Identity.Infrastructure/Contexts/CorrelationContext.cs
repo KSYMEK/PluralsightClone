@@ -1,8 +1,10 @@
-namespace Pluralsight.Services.Identity.Infrastructure.Contexts {
+namespace Pluralsight.Services.Identity.Infrastructure.Contexts
+{
     using System;
     using System.Collections.Generic;
 
-    internal class CorrelationContext {
+    internal class CorrelationContext
+    {
         public string CorrelationId { get; set; }
         public string SpanContext { get; set; }
         public UserContext User { get; set; }
@@ -12,7 +14,8 @@ namespace Pluralsight.Services.Identity.Infrastructure.Contexts {
         public string Name { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public class UserContext {
+        public class UserContext
+        {
             public string Id { get; set; }
             public bool IsAuthenticated { get; set; }
             public string Role { get; set; }

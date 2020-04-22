@@ -1,4 +1,5 @@
-namespace Pluralsight.Services.Identity.Infrastructure.Decorators {
+namespace Pluralsight.Services.Identity.Infrastructure.Decorators
+{
     using System;
     using System.Threading.Tasks;
     using Convey.CQRS.Events;
@@ -6,14 +7,16 @@ namespace Pluralsight.Services.Identity.Infrastructure.Decorators {
     using Convey.MessageBrokers.Outbox;
 
     internal sealed class OutboxEventHandlerDecorator<TEvent> : IEventHandler<TEvent>
-        where TEvent : class, IEvent {
+        where TEvent : class, IEvent
+    {
         private readonly bool _enabled;
         private readonly IEventHandler<TEvent> _handler;
         private readonly string _messageId;
         private readonly IMessageOutbox _outbox;
 
         public OutboxEventHandlerDecorator(IEventHandler<TEvent> handler, IMessageOutbox outbox,
-            OutboxOptions outboxOptions, IMessagePropertiesAccessor messagePropertiesAccessor) {
+            OutboxOptions outboxOptions, IMessagePropertiesAccessor messagePropertiesAccessor)
+        {
             _handler = handler;
             _outbox = outbox;
             _enabled = outboxOptions.Enabled;
@@ -24,7 +27,8 @@ namespace Pluralsight.Services.Identity.Infrastructure.Decorators {
                 : messageProperties.MessageId;
         }
 
-        public Task HandleAsync(TEvent @event) {
+        public Task HandleAsync(TEvent @event)
+        {
             return _enabled
                 ? _outbox.HandleAsync(_messageId, () => _handler.HandleAsync(@event))
                 : _handler.HandleAsync(@event);

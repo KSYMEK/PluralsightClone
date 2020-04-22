@@ -1,4 +1,5 @@
-namespace Pluralsight.Services.Identity.Infrastructure.Services {
+namespace Pluralsight.Services.Identity.Infrastructure.Services
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -12,7 +13,8 @@ namespace Pluralsight.Services.Identity.Infrastructure.Services {
     using Microsoft.Extensions.Logging;
     using OpenTracing;
 
-    public class MessageBroker : IMessageBroker {
+    public class MessageBroker : IMessageBroker
+    {
         private const string DefaultSpanContextHeader = "span_context";
         private readonly IBusPublisher _busPublisher;
         private readonly ICorrelationContextAccessor _contextAccessor;
@@ -26,7 +28,8 @@ namespace Pluralsight.Services.Identity.Infrastructure.Services {
         public MessageBroker(IBusPublisher busPublisher, IMessageOutbox outbox,
             ICorrelationContextAccessor contextAccessor, IHttpContextAccessor httpContextAccessor,
             IMessagePropertiesAccessor messagePropertiesAccessor, RabbitMqOptions options, ITracer tracer,
-            ILogger<IMessageBroker> logger) {
+            ILogger<IMessageBroker> logger)
+        {
             _busPublisher = busPublisher;
             _outbox = outbox;
             _contextAccessor = contextAccessor;
@@ -39,11 +42,13 @@ namespace Pluralsight.Services.Identity.Infrastructure.Services {
                 : options.SpanContextHeader;
         }
 
-        public async Task PublishAsync(params IEvent[] events) {
+        public async Task PublishAsync(params IEvent[] events)
+        {
             await PublishAsync(events?.AsEnumerable());
         }
 
-        private async Task PublishAsync(IEnumerable<IEvent> events) {
+        private async Task PublishAsync(IEnumerable<IEvent> events)
+        {
             if (events is null)
                 return;
 
@@ -59,7 +64,8 @@ namespace Pluralsight.Services.Identity.Infrastructure.Services {
             var correlationContext =
                 _contextAccessor.CorrelationContext ?? _httpContextAccessor.GetCorrelationContext();
 
-            foreach (var @event in events) {
+            foreach (var @event in events)
+            {
                 if (@event is null)
                     continue;
 

@@ -1,0 +1,45 @@
+@api = http://localhost:5000
+@accessToken = 
+
+# ================== IDENTITY ================== #
+
+### POST sign-up
+POST {{api}}/identity/sign-up
+Content-Type: application/json
+
+{
+  "email": "admin-user1@mailinator.com",
+  "password": "secret",
+  "role": "admin"
+}
+
+### POST sign-in
+POST {{api}}/identity/sign-in
+Content-Type: application/json
+
+{
+  "email": "admin-user1@mailinator.com",
+  "password": "secret"
+}
+
+### GET me
+GET {{api}}/identity/me
+Authorization: Bearer {{accessToken}}
+
+
+# ================== COURSES ================== #
+
+### GET courses
+GET {{api}}/courses
+Content-Type: application/json
+
+### POST course
+POST {{api}}/courses
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "Title": "Awesome Course1324",
+  "Description": "Awesome Course Description",
+  "Tags": ["course", "tags"]
+}

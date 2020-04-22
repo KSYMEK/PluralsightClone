@@ -1,13 +1,17 @@
-namespace Pluralsight.Services.Identity.Core.Entities {
+namespace Pluralsight.Services.Identity.Core.Entities
+{
     using System;
     using Exceptions;
 
-    public class RefreshToken : AggregateRoot {
-        protected RefreshToken() {
+    public class RefreshToken : AggregateRoot
+    {
+        protected RefreshToken()
+        {
         }
 
         public RefreshToken(AggregateId id, AggregateId userId, string token, DateTime createdAt,
-            DateTime? revokedAt = null) {
+            DateTime? revokedAt = null)
+        {
             if (string.IsNullOrWhiteSpace(token)) throw new EmptyRefreshTokenException();
 
             Id = id;
@@ -23,7 +27,8 @@ namespace Pluralsight.Services.Identity.Core.Entities {
         public DateTime? RevokedAt { get; private set; }
         public bool Revoked => RevokedAt.HasValue;
 
-        public void Revoke(DateTime revokedAt) {
+        public void Revoke(DateTime revokedAt)
+        {
             if (Revoked) throw new RevokedRefreshTokenException();
 
             RevokedAt = revokedAt;

@@ -1,4 +1,5 @@
-namespace Pluralsight.Services.Identity.Application.Services.Identity {
+namespace Pluralsight.Services.Identity.Application.Services.Identity
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -9,21 +10,24 @@ namespace Pluralsight.Services.Identity.Application.Services.Identity {
     using DTO;
     using Exceptions;
 
-    public class RefreshTokenService : IRefreshTokenService {
+    public class RefreshTokenService : IRefreshTokenService
+    {
         private readonly IJwtProvider _jwtProvider;
         private readonly IRefreshTokenRepository _refreshTokenRepository;
         private readonly IRng _rng;
         private readonly IUserRepository _userRepository;
 
         public RefreshTokenService(IRefreshTokenRepository refreshTokenRepository, IUserRepository userRepository,
-            IJwtProvider jwtProvider, IRng rng) {
+            IJwtProvider jwtProvider, IRng rng)
+        {
             _refreshTokenRepository = refreshTokenRepository;
             _userRepository = userRepository;
             _jwtProvider = jwtProvider;
             _rng = rng;
         }
 
-        public async Task<string> CreateAsync(Guid userId) {
+        public async Task<string> CreateAsync(Guid userId)
+        {
             var token = _rng.Generate(30, true);
             var refreshToken = new RefreshToken(new AggregateId(), userId, token, DateTime.UtcNow);
             await _refreshTokenRepository.AddAsync(refreshToken);
@@ -31,7 +35,8 @@ namespace Pluralsight.Services.Identity.Application.Services.Identity {
             return token;
         }
 
-        public async Task RevokeAsync(string refreshToken) {
+        public async Task RevokeAsync(string refreshToken)
+        {
             var token = await _refreshTokenRepository.GetAsync(refreshToken);
             if (token is null)
                 throw new InvalidRefreshTokenException();
@@ -40,7 +45,8 @@ namespace Pluralsight.Services.Identity.Application.Services.Identity {
             await _refreshTokenRepository.UpdateAsync(token);
         }
 
-        public async Task<AuthDto> UseAsync(string refreshToken) {
+        public async Task<AuthDto> UseAsync(string refreshToken)
+        {
             var token = await _refreshTokenRepository.GetAsync(refreshToken);
             if (token is null)
                 throw new InvalidRefreshTokenException();
@@ -53,7 +59,8 @@ namespace Pluralsight.Services.Identity.Application.Services.Identity {
                 throw new UserNotFoundException(token.UserId);
 
             var claims = user.Permissions.Any()
-                ? new Dictionary<string, IEnumerable<string>> {
+                ? new Dictionary<string, IEnumerable<string>>
+                {
                     ["permissions"] = user.Permissions
                 }
                 : null;

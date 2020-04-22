@@ -1,17 +1,22 @@
-namespace Pluralsight.Services.Identity.Infrastructure.Contexts {
+namespace Pluralsight.Services.Identity.Infrastructure.Contexts
+{
     using System;
     using System.Collections.Generic;
     using Application;
 
-    public class IdentityContext : IIdentityContext {
-        internal IdentityContext() {
+    public class IdentityContext : IIdentityContext
+    {
+        internal IdentityContext()
+        {
         }
 
         internal IdentityContext(CorrelationContext.UserContext context)
-            : this(context.Id, context.Role, context.IsAuthenticated, context.Claims) {
+            : this(context.Id, context.Role, context.IsAuthenticated, context.Claims)
+        {
         }
 
-        internal IdentityContext(string id, string role, bool isAuthenticated, IDictionary<string, string> claims) {
+        internal IdentityContext(string id, string role, bool isAuthenticated, IDictionary<string, string> claims)
+        {
             Id = Guid.TryParse(id, out var userId) ? userId : Guid.Empty;
             Role = role ?? string.Empty;
             IsAuthenticated = isAuthenticated;

@@ -1,9 +1,12 @@
-namespace Pluralsight.Services.Identity.Application.Commands {
+namespace Pluralsight.Services.Identity.Application.Commands
+{
     using Convey.CQRS.Commands;
 
     [Contract]
-    public class SignIn : ICommand {
-        public SignIn(string email, string password) {
+    public class SignIn : ICommand
+    {
+        public SignIn(string email, string password)
+        {
             Email = email;
             Password = password;
         }

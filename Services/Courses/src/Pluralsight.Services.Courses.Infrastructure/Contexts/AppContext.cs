@@ -1,18 +1,14 @@
-﻿using System;
-using Pluralsight.Services.Courses.Application;
-
-namespace Pluralsight.Services.Courses.Infrastructure.Contexts
+﻿namespace Pluralsight.Services.Courses.Infrastructure.Contexts
 {
+    using System;
+    using Application;
+
     public class AppContext : IAppContext
     {
-        public string RequestId { get; }
-        public IIdentityContext Identity { get; }
-
         internal AppContext() : this(Guid.NewGuid().ToString("N"), IdentityContext.Empty)
         {
-            
         }
-        
+
         internal AppContext(CorrelationContext context) : this(context.CorrelationId,
             context.User is null ? IdentityContext.Empty : new IdentityContext(context.User))
         {
@@ -25,5 +21,7 @@ namespace Pluralsight.Services.Courses.Infrastructure.Contexts
         }
 
         internal static IAppContext Empty => new AppContext();
+        public string RequestId { get; }
+        public IIdentityContext Identity { get; }
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Pluralsight.Services.Courses.Application.DTO
+﻿namespace Pluralsight.Services.Courses.Application.DTO
 {
+    using System;
+    using System.Collections.Generic;
+
     public class CourseModuleDto
     {
         public Guid Id { get; set; }

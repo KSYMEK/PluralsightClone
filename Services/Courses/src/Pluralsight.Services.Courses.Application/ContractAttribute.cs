@@ -1,6 +1,8 @@
-using System;
+namespace Pluralsight.Services.Courses.Application
+{
+    using System;
 
-namespace Pluralsight.Services.Courses.Application {
-    public class ContractAttribute : Attribute {
+    public class ContractAttribute : Attribute
+    {
     }
 }

@@ -1,4 +1,5 @@
-namespace Pluralsight.Services.Identity.Infrastructure {
+namespace Pluralsight.Services.Identity.Infrastructure
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -47,8 +48,10 @@ namespace Pluralsight.Services.Identity.Infrastructure {
     using Newtonsoft.Json;
     using Services;
 
-    public static class Extensions {
-        public static IConveyBuilder AddInfrastructure(this IConveyBuilder builder) {
+    public static class Extensions
+    {
+        public static IConveyBuilder AddInfrastructure(this IConveyBuilder builder)
+        {
             builder.Services.AddSingleton<IJwtProvider, JwtProvider>();
             builder.Services.AddSingleton<IPasswordService, PasswordService>();
             builder.Services.AddSingleton<IPasswordHasher<IPasswordService>, PasswordHasher<IPasswordService>>();
@@ -83,7 +86,8 @@ namespace Pluralsight.Services.Identity.Infrastructure {
                 .AddWebApiSwaggerDocs();
         }
 
-        public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder application) {
+        public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder application)
+        {
             application.UseErrorHandler()
                 .UseSwaggerDocs()
                 .UseJaeger()
@@ -99,18 +103,21 @@ namespace Pluralsight.Services.Identity.Infrastructure {
             return application;
         }
 
-        public static async Task<Guid> AuthenticateUsingJwtAsync(this HttpContext context) {
+        public static async Task<Guid> AuthenticateUsingJwtAsync(this HttpContext context)
+        {
             var authentication = await context.AuthenticateAsync(JwtBearerDefaults.AuthenticationScheme);
             return authentication.Succeeded ? Guid.Parse(authentication.Principal.Identity.Name) : Guid.Empty;
         }
 
-        internal static CorrelationContext GetCorrelationContext(this IHttpContextAccessor accessor) {
+        internal static CorrelationContext GetCorrelationContext(this IHttpContextAccessor accessor)
+        {
             return accessor.HttpContext?.Request.Headers.TryGetValue("Correlation-Context", out var json) is true
                 ? JsonConvert.DeserializeObject<CorrelationContext>(json.FirstOrDefault())
                 : null;
         }
 
-        internal static string GetSpanContext(this IMessageProperties messageProperties, string header) {
+        internal static string GetSpanContext(this IMessageProperties messageProperties, string header)
+        {
             if (messageProperties is null)
                 return string.Empty;
 
@@ -120,7 +127,8 @@ namespace Pluralsight.Services.Identity.Infrastructure {
             return string.Empty;
         }
 
-        internal static IDictionary<string, object> GetHeadersToForward(this IMessageProperties messageProperties) {
+        internal static IDictionary<string, object> GetHeadersToForward(this IMessageProperties messageProperties)
+        {
             const string sagaHeader = "Saga";
             if (messageProperties?.Headers is null || !messageProperties.Headers.TryGetValue(sagaHeader, out var saga))
                 return null;
