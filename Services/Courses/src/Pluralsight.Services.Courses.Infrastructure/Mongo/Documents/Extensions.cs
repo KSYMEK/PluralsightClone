@@ -10,13 +10,13 @@
         public static Course AsEntity(this CourseDocument document)
         {
             return new Course(document.Id, document.Title, document.Description, document.Tags,
-                document.Modules.ToEntities());
+                document.Modules);
         }
 
         public static CourseModule AsEntity(this CourseModuleDocument document)
         {
             return new CourseModule(document.Id, document.CourseId, document.ModuleName, document.ModuleOrder,
-                document.Description, document.Episodes.ToEntities());
+                document.Description, document.Episodes);
         }
 
         public static CourseEpisode AsEntity(this CourseEpisodeDocument document)
@@ -25,22 +25,11 @@
                 document.EpisodeVideoLink, document.Description);
         }
 
-        public static CourseDto AsDto(this CourseDocument document)
-        {
-            return new CourseDto
-            {
-                Id = document.Id,
-                CourseModules = document.Modules.AsDtos(),
-                Tags = document.Tags
-            };
-        }
-
         public static CourseModuleDto AsDto(this CourseModuleDocument document)
         {
             return new CourseModuleDto
             {
                 Id = document.Id,
-                CourseEpisodes = document.Episodes.AsDtos(),
                 Description = document.Description,
                 ModuleName = document.ModuleName
             };
@@ -55,11 +44,6 @@
                 EpisodeName = document.EpisodeName,
                 EpisodeVideoLink = document.EpisodeVideoLink
             };
-        }
-
-        public static IEnumerable<CourseModuleDto> AsDtos(this IEnumerable<CourseModuleDocument> documents)
-        {
-            return documents.Select(document => document.AsDto());
         }
 
         public static IEnumerable<CourseEpisodeDto> AsDtos(this IEnumerable<CourseEpisodeDocument> documents)
@@ -84,7 +68,7 @@
                 Id = entity.Id,
                 CreatedAt = entity.CreatedAt,
                 Description = entity.Description,
-                Modules = entity.Modules.AsDocuments(),
+                Modules = entity.Modules,
                 Tags = entity.Tags,
                 Title = entity.Title
             };
@@ -97,7 +81,7 @@
                 Id = entity.Id,
                 CourseId = entity.CourseId,
                 Description = entity.Description,
-                Episodes = entity.Episodes.AsDocuments(),
+                Episodes = entity.Episodes,
                 ModuleName = entity.ModuleName,
                 ModuleOrder = entity.ModuleOrder
             };

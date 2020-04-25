@@ -24,7 +24,7 @@
             var list = result.Select(document => document.AsEntity()).ToList();
             return list;
         }
-        
+
         public async Task<Course> GetAsync(Guid id)
         {
             var result = await _repository.GetAsync(id);

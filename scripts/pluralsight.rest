@@ -1,5 +1,7 @@
 @api = http://localhost:5000
 @accessToken = 
+@courseId = 
+@moduleId = 
 
 # ================== IDENTITY ================== #
 
@@ -33,13 +35,36 @@ Authorization: Bearer {{accessToken}}
 GET {{api}}/courses
 Content-Type: application/json
 
+### GET specific course
+GET {{api}}/courses/{{courseId}}
+Content-Type: application/json
+
+### GET modules from course
+GET {{api}}/courses/{{courseId}}/modules
+Content-Type: application/json
+
+### GET specific module from course
+GET {{api}}/courses/{{courseId}}/modules/{{moduleId}}
+Content-Type: application/json
+
 ### POST course
 POST {{api}}/courses
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
-  "Title": "Awesome Course1324",
+  "Title": "Awesome Course",
   "Description": "Awesome Course Description",
   "Tags": ["course", "tags"]
+}
+
+### POST course module
+POST {{api}}/courses/{{courseId}}/modules
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "moduleName": "First Module",
+  "description": "Module description",
+  "moduleOrder": 1
 }

@@ -7,7 +7,7 @@
     public class CourseModule : AggregateRoot
     {
         public CourseModule(Guid id, Guid courseId, string moduleName, int moduleOrder, string description,
-            IEnumerable<CourseEpisode> episodes = null)
+            IEnumerable<Guid> episodes = null)
         {
             if (string.IsNullOrWhiteSpace(moduleName))
                 throw new InvalidModuleNameException();
@@ -23,14 +23,13 @@
             Description = description;
             ModuleName = moduleName;
             ModuleOrder = moduleOrder;
-            Episodes = episodes ?? new List<CourseEpisode>();
+            Episodes = episodes ?? new List<Guid>();
         }
 
         public Guid CourseId { get; }
         public string ModuleName { get; }
-
         public string Description { get; }
-        public IEnumerable<CourseEpisode> Episodes { get; }
+        public IEnumerable<Guid> Episodes { get; }
         public int ModuleOrder { get; }
     }
 }

@@ -8,7 +8,7 @@
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public IEnumerable<CourseModuleDocument> Modules { get; set; }
+        public IEnumerable<Guid> Modules { get; set; }
         public DateTime CreatedAt { get; set; }
         public IEnumerable<string> Tags { get; set; }
         public Guid Id { get; set; }

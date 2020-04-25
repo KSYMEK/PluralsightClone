@@ -114,6 +114,23 @@ modules:
         auth: false
         bind:
           - courseId:{courseId}
+          
+      - upstream: /{courseId}/modules
+        method: GET
+        use: downstream
+        downstream: courses-service/courses/{courseId}/modules
+        auth: false
+        bind:
+          - courseId:{courseId}
+
+      - upstream: /{courseId}/modules/{courseModuleId}
+        method: GET
+        use: downstream
+        downstream: courses-service/courses/{courseId}/modules/{courseModuleId}
+        auth: false
+        bind:
+          - courseId:{courseId}
+          - courseModuleId:{courseModuleId}
             
       - upstream: /
         method: POST
@@ -122,6 +139,17 @@ modules:
         auth: true
         resourceId:
           property: courseId
+          generate: true
+
+      - upstream: /{courseId}/modules
+        method: POST
+        use: downstream
+        downstream: courses-service/courses/{courseId}/modules
+        auth: true
+        bind:
+          - courseId:{courseId}
+        resourceId:
+          property: moduleId
           generate: true
         
     services:

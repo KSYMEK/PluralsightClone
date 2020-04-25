@@ -7,12 +7,6 @@
     [Contract]
     public class AddCourse : ICommand
     {
-        
-        public Guid CourseId { get; }
-        public string Title { get; }
-        public string Description { get; }
-        public IEnumerable<string> Tags { get; }
-        
         public AddCourse(Guid courseId, string title, string description, IEnumerable<string> tags)
         {
             CourseId = courseId == Guid.Empty ? Guid.NewGuid() : courseId;
@@ -20,5 +14,10 @@
             Description = description;
             Tags = tags;
         }
+
+        public Guid CourseId { get; }
+        public string Title { get; }
+        public string Description { get; }
+        public IEnumerable<string> Tags { get; }
     }
 }

@@ -29,7 +29,7 @@
         public async Task AddAsync(CourseEpisode episode, Guid moduleId)
         {
             var module = await _moduleRepository.GetAsync(moduleId);
-            module.Episodes.ToList().Add(episode);
+            module.Episodes.ToList().Add(episode.Id);
             await _repository.AddAsync(episode.AsDocument());
             await _moduleRepository.UpdateAsync(module);
         }
@@ -44,7 +44,7 @@
         {
             var module = await _moduleRepository.GetAsync(moduleId);
             var episode = await _repository.GetAsync(id);
-            module.Episodes.ToList().Remove(episode.AsEntity());
+            module.Episodes.ToList().Remove(episode.Id);
             await _repository.DeleteAsync(id);
             await _moduleRepository.UpdateAsync(module);
         }

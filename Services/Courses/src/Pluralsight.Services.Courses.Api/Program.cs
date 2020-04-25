@@ -35,9 +35,17 @@ namespace Pluralsight.Services.Courses.Api
                         .Get("", ctx => ctx.Response.WriteAsync(ctx.RequestServices.GetService<AppOptions>().Name))
                         .Get<GetCourses, IEnumerable<CourseDto>>("courses")
                         .Get<GetCourse, CourseDto>("courses/{courseId}")
-                        .Get<GetCourseModule, CourseModuleDto>("courses/modules/{courseModuleId}")
                         .Get<GetCourseModules, IEnumerable<CourseModuleDto>>("courses/{courseId}/modules")
-                        .Post<AddCourse>("courses", afterDispatch: (cmd, ctx) => ctx.Response.Created($"courses/{cmd.CourseId}"))
+                        .Get<GetCourseModule, CourseModuleDto>("courses/{courseId}/modules/{courseModuleId}")
+                        .Post<AddCourse>("courses",
+                            afterDispatch: (cmd, ctx) => ctx.Response.Created($"courses/{cmd.CourseId}"))
+                        .Post<AddCourseModule>("courses/{courseId}/modules",
+                            afterDispatch: (cmd, ctx) =>
+                                ctx.Response.Created($"courses/{cmd.CourseId}/modules/{cmd.ModuleId}"))
+                        .Post<AddCourseModuleEpisode>("courses/{courseId}/modules/{moduleId}",
+                            afterDispatch: (cmd, ctx) =>
+                                ctx.Response.Created(
+                                    $"courses/{cmd.CourseId}/modules/{cmd.ModuleId}/episodes/{cmd.EpisodeId}"))
                     ))
                 .UseLogging()
                 .UseVault()

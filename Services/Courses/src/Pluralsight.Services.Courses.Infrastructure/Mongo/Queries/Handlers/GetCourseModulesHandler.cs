@@ -1,7 +1,6 @@
 ﻿namespace Pluralsight.Services.Courses.Infrastructure.Mongo.Queries.Handlers
 {
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using Application.DTO;
     using Application.Queries;
@@ -16,7 +15,7 @@
         {
             _repository = repository;
         }
-        
+
         public async Task<IEnumerable<CourseModuleDto>> HandleAsync(GetCourseModules query)
         {
             var result = await _repository.GetAllAsync(query.CourseId);
@@ -24,25 +23,11 @@
 
             foreach (var courseModule in result)
             {
-                var episodesDto = new List<CourseEpisodeDto>();
-                foreach (var episode in courseModule.Episodes)
-                {
-                    var eDto = new CourseEpisodeDto
-                    {
-                        EpisodeName = episode.EpisodeName,
-                        Description = episode.Description,
-                        Id = episode.Id,
-                        EpisodeVideoLink = episode.EpisodeVideoLink
-                    };
-                    episodesDto.Add(eDto);
-                }
-
-                var dto = new CourseModuleDto()
+                var dto = new CourseModuleDto
                 {
                     Id = courseModule.Id,
                     Description = courseModule.Description,
-                    ModuleName = courseModule.ModuleName,
-                    CourseEpisodes = episodesDto
+                    ModuleName = courseModule.ModuleName
                 };
                 list.Add(dto);
             }
